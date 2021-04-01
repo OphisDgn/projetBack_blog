@@ -22,6 +22,9 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         $faker->seed(0);
 
+        /*
+            L'utilisateur n'étant ni administrateur, ni auteur.
+        */
         $user = new User();
         $user
             ->setEmail('user@ex.com')
@@ -33,6 +36,9 @@ class AppFixtures extends Fixture
 
         $manager->persist($user);
         
+        /*
+            L'utilisateur étant administrateur.
+        */
         $admin = new User();
         $admin
             ->setEmail('admin@ex.com')
@@ -45,6 +51,9 @@ class AppFixtures extends Fixture
 
         $manager->persist($admin);
 
+        /*
+            L'utilisateur étant auteur à faire !
+        */
         $manager->flush();
     }
 }
