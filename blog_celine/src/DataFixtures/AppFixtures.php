@@ -54,6 +54,8 @@ class AppFixtures extends Fixture
         /*
             L'utilisateur étant auteur à faire !
         */
+
         $manager->flush();
+
     }
 }
