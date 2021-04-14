@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Entity\Article;
+use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -54,6 +56,23 @@ class AppFixtures extends Fixture
         /*
             L'utilisateur étant auteur à faire !
         */
+        
+        $category = new Category();
+        $category->setName('Test');
+        $manager->persist($category);
+
+        /* on passe à la création fausse d'article */
+        for ($i = 0;$i < 10; $i++) {
+            $article = new Article();
+            $article->setTitle($faker->sentence($nbWords=10, $variableNbWords=true))
+                ->setContent($faker->sentence($nbWords=10, $variableNbWords=true))
+                ->setIsVisible(true)
+                ->setPostDate($faker->dateTimeBetween('-6 months'))
+                ->setCategory($category)
+                ->setAuthor($admin);
+                
+                $manager->persist($article);
+        }
 
         $manager->flush();
 
