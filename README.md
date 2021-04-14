@@ -12,7 +12,7 @@ Puis, il faut lancer la commande suivante afin :
 Et enfin, nous pouvons lancer le projet à l'aide de la commande : 
 > ``` npm start ```
 
-Le document Presentation_Blog_LIEUTAUD_CELINE[https://github.com/OphisDgn/projetBack_blog/blob/master/Presentation_Blog_LIEUTAUD_CELINE.docx] présente les fonctionnalités présentes dans le blog, les technologies utilisées mais aussi les problèmes rencontrés.
+Le document nommé ``` Presentation_Blog_LIEUTAUD_CELINE ``` présente les fonctionnalités présentes dans le blog, les technologies utilisées mais aussi les problèmes rencontrés lors du développement.
 
 Projet réalisé dans le cadre du cours : Dev Back.
 Par Céline LIEUTAUD
