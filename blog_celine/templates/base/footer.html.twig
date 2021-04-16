@@ -1,0 +1,46 @@
+<style>
+.blog-footer {
+    padding: 20px 0 5px 0;
+    color: #FFF;
+    text-align: center;
+    background-color: #414141;
+    border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}
+.icons {
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 5px;
+}
+.fa {
+    color:  #414141;
+    font-size: 1.25rem;
+}
+</style>
+
+<footer class="blog-footer">
+    <div class="row" style="width:100%;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="list_icons">
+                <a class="icons" href="{{ path('home') }}"><i class="fa fa-facebook"></i></a>
+                <a class="icons" href="{{ path('home') }}"><i class="fa fa-twitter"></i></a>
+                <a class="icons" href="{{ path('home') }}"><i class="fa fa-youtube"></i></a>
+                <a class="icons" href="{{ path('home') }}"><i class="fa fa-linkedin"></i></a>
+                <a class="icons" href="{{ path('home') }}"><i class="fa fa-git"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p>NewsLetter</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p> Copyright &copy; 2021, all rights reserved by Céline LIEUTAUD</p>
+    </div>
+</footer>

@@ -58,7 +58,6 @@ class AppFixtures extends Fixture
         */
         
         $category = new Category();
-        $category->setName('Test');
         $category->setName('Première');
         $manager->persist($category);
 

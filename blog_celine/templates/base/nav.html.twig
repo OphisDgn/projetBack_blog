@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light navbarBlog" style="background-color: #cbbaa6;box-shadow:0px 0px 9px 0px #9e9e9e;">
+    <div class="container">
+        <!--div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="{{ path('home') }}">Blog</a>
+        </div-->
+        <a class="navbar-brand" href={{ path('home') }}>
+            Blog
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <i class="fe fe-x"></i>
+        </button>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}" style="color: white;">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white;">A propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white;">Contact</a>
+                </li>
+                {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}" style="color: white;">Se déconnecter</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white;">Créer un compte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}" style="color: white;">Se connecter</a>
+                </li>
+                {% endif %}
+                
+            </ul>
+        </div>
+    </div>
+</nav>

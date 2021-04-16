@@ -10,7 +10,7 @@ use App\Repository\ArticleRepository;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
     public function list(ArticleRepository $ripo)
     {
@@ -21,11 +21,4 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/home/{id}", name="show")
-     */
-    public function show()
-    {
-
-    }
 }
