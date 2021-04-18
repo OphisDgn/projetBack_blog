@@ -73,3 +73,4 @@ Encore
 ;
 
 module.exports = Encore.getWebpackConfig();
+module.exports = Encore.addExternals({ jquery: 'jQuery' }).getWebpackConfig();
