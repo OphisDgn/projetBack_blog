@@ -202,11 +202,18 @@ class Article
         return $this;
     }
 
+    /* pour compter le nombre de commentaires sur un article */
     public function __count () {
         if (count($this->comments) == 0) {
             return 0;
         } else {
             return count($this->comments);
         }
+    }
+    
+    /* pour afficher le titre de l'article */
+    public function __toString()
+    {
+        return $this->title;
     }
 }

@@ -16,7 +16,6 @@ class HashPasswordListener implements EventSubscriber {
         $this->passwordEncoder = $passwordEncoder;
     }
     
-    
     public function getSubscribedEvents()
     {
         return ['prePersist', 'preUpdate'];

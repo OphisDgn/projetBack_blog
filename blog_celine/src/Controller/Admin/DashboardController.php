@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\User;
 
 class DashboardController extends AbstractDashboardController
@@ -35,5 +36,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Les utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Les articles', 'fas fa-newspaper', Article::class);
         yield MenuItem::linkToCrud('Les categories', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Les commentaires', 'fas fa-comments', Comment::class);
     }
 }

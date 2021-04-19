@@ -31,12 +31,10 @@
 .show-details-date {
     text-align: right;
 }
-
 .container-content {
     padding: 50px 0;
     margin: 0px 190px;
 }
-
 /* media queries */
 @media screen and (max-width: 600px) {
     .headTitle {
@@ -46,7 +44,6 @@
         padding: 50px 40px;
     }
 }
-
 </style>
 
 <div class="container-header">
@@ -76,4 +73,38 @@
     </div>
 </div>
 
+<br/>
+<div class="container">
+    <h4>Les commentaires</h4>
+</div>
+
+{% for comment in comments %}
+    <div class="container containerComment">
+        <div class="headerComment">
+            <p style="font-size:13px;">Ecrit par{{ comment.author.lastname }} {{ comment.author.lastname }}, le {{ comment.created_at|date }}</p>
+        </div>
+        <div class="bodyComment">
+            <p>{{ comment.content }}</p>
+        </div>
+    </div>
+    <div class="container">
+        {{ form(form) }}
+    </div>
+
+{% else %}
+    <div class="container">
+        <p>Il n'y a pas encore de commentaire, publiez le premier ! </p>
+        {{ form(form) }}
+    </div>
+{% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+$(document).ready(function() {
+    $('#comment_content').addClass('form-control');
+    $('#comment_envoyer').addClass('btn btn-outline-success');
+})
+</script>
 {% endblock %}

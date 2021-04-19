@@ -26,13 +26,13 @@ class EasyAdminSubscriber implements EventSubscriberInterface {
     public function setArticleDateAndUser(BeforeEntityPersistedEvent $event) {
         $entity = $event->getEntityInstance();
         if (($entity instanceof Article)) {
+            $now = new DateTime('now');
+            $entity->setPublishAt($now);
+
+            $user = $this->security->getUser();
+            $entity->setAuthor($user);
+        } else {
             return;
         }
-
-        $now = new DateTime('now');
-        $entity->setPublishAt($now);
-
-        $user = $this->security->getUser();
-        $entity->setAuthor($user);
     }
 }
