@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Entity\Category;
+use App\Entity\User;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -28,6 +30,8 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToCrud('Les utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Les articles', 'fas fa-newspaper', Article::class);
+        yield MenuItem::linkToCrud('Les categories', 'fas fa-list', Category::class);
     }
 }

@@ -240,4 +240,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /* afin d'avoir le nom de l'utilisateur dans le backoffice */
+    public function __toString()
+    {
+        return $this->username;
+    }
 }

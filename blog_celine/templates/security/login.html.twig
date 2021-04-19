@@ -2,28 +2,36 @@
 
 {% block title %}Log in!{% endblock %}
 
-{% block stylesheets %}
-    {{parent()}}
-{% endblock %}
-
-
 {% block body %}
-<form method="post">
+<style>
+.formLogin {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    padding: 50px 0px;
+    text-align: center;
+}
+.inputLogin {
+    margin: 10px 0;
+}
+</style>
+
+{% if app.user %}
+    <div class="formLogin">
+        <a class="btn btn-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
+    </div>
+{% else %}
+    <form method="post" class="formLogin">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
-        </div>
-    {% endif %}
-
+    
     <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
     <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control inputLogin" required autofocus>
     <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <input type="password" name="password" id="inputPassword" class="form-control inputLogin" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
@@ -44,4 +52,6 @@
         Se connecter
     </button>
 </form>
+{% endif %}
+
 {% endblock %}

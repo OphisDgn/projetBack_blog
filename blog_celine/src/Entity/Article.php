@@ -201,4 +201,12 @@ class Article
 
         return $this;
     }
+
+    public function __count () {
+        if (count($this->comments) == 0) {
+            return 0;
+        } else {
+            return count($this->comments);
+        }
+    }
 }
