@@ -2,40 +2,53 @@
 
 {% block body %}
 
+{% block stylesheets %}
+{{parent()}}
 <style>
-.cardHeaderBlog {
-    height: 250px;
-    overflow: hidden;
-    padding: 0;
-    position: relative;
-}
-.card-headerimg {
-    height: 100%;
-    object-fit: cover;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(230,93,76,1) 50%, rgba(255,255,255,1) 100%);
-}
-.card-category {
-    position: absolute;
-    bottom: 0;
-    height: auto;
-    width: 100%;
-    background: #f7f7f7;
-    opacity: 0.7;
-    padding: 0px 15px;
-}
-.card-body {
-    margin-bottom: 10px;
-    flex-shrink: 2;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-height: 1.5em;
-}
-.card-title {
-    font-weight: bold;
-}
+    .cardHeaderBlog {
+        height: 250px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+    }
+    .card-headerimg {
+        height: 100%;
+        object-fit: cover;
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(230,93,76,1) 50%, rgba(255,255,255,1) 100%);
+    }
+    .card-category {
+        position: absolute;
+        bottom: 0;
+        height: auto;
+        width: 100%;
+        background: #f7f7f7;
+        opacity: 0.7;
+        padding: 0px 15px;
+        display: inline-flex;
+    }
 
+    .favIcon {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .card-title {
+        font-weight: bold;
+    }
+    .card-text, .cardauthor {
+        margin: 10px 0;
+    }
+    .cardauthor {
+        font-size: 13px;
+    }
+    .btnBottom {
+        text-align: right;
+    }
 </style>
+{% endblock %}
+
 
 <div class="container">
     <div class="row">
@@ -46,14 +59,21 @@
                         <div class="card-header cardHeaderBlog">
                             <div class="card-img-top card-headerimg"></div>
                             <div class="card-category">
-                                <h4>{{ art.category }}</h4>
+                                <div class="categoryH">
+                                    <h4>{{ art.category }}</h4>
+                                </div>
+                                <div class="favIcon favIcon_{{ art.id }}">
+                                    <i class="far fa-heart"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="card-title">{{ art.title }}</div>
                             <div class="card-text">{{ art.content }}</div>
-                            <p style="font-size:13px;">{{ art.author.lastname }} {{ art.author.firstname }}</p>
-                            <a href="/article/{{ art.id }}" class="btn btn-primary">Lire la suite</a>
+                            <p class="cardauthor">{{ art.author.lastname }} {{ art.author.firstname }}, le {{ art.postDate|date('d/m/Y') }}</p>
+                            <div class="btnBottom">
+                                <a href="/article/{{ art.id }}" class="btn btn-outline-secondary btnBlog">Lire la suite</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,4 +81,19 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+<script>
+    $(document).ready(function () {
+        $.each($('.favIcon i'), function () {
+            $(this).click(function () {
+                $(this).removeClass('far fa-heart');
+                $(this).addClass('fas fa-heart');
+                $(this).css("color", "#b00d0d");
+            });
+        });
+    });
+</script>
 {% endblock %}
