@@ -52,10 +52,6 @@ class AppFixtures extends Fixture
         ;
 
         $manager->persist($admin);
-
-        /*
-            L'utilisateur étant auteur à faire !
-        */
         
         $category = new Category();
         $category->setName('Première');

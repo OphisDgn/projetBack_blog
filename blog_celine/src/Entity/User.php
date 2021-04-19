@@ -38,6 +38,12 @@ class User implements UserInterface
     private $password;
 
     /**
+     * A non-persisted field that's used to create the encoded password.
+     * @var string
+     */
+    private $plainPassword;
+    
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstname;
@@ -129,6 +135,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getPlainPassword() {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($plainPassword) {
+        $this->plainPassword = $plainPassword;
+        /**
+         * si Doctrine pense qu'un objet n'a pas été mis à jour, les Doctrines listeners ne seront pas appelés 
+         */
+        $this->password = null;
+    }
+
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
@@ -146,7 +164,7 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     public function getFirstname(): ?string
