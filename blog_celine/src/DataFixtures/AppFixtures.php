@@ -54,7 +54,7 @@ class AppFixtures extends Fixture
         $manager->persist($admin);
         
         $category = new Category();
-        $category->setName('Première');
+        $category->setName('Première catégorie');
         $manager->persist($category);
 
         /* on passe à la création fausse d'article */
