@@ -18,6 +18,7 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('admin/dashboard.html.twig');
     }
 
@@ -29,6 +30,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToRoute('Page d\'accueil', 'fa fa-chevron-left', 'home');
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Les utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Les articles', 'fas fa-newspaper', Article::class);
