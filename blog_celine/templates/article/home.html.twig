@@ -46,6 +46,9 @@
     .btnBottom {
         text-align: right;
     }
+    .pagination span {
+        padding: 5px;
+    }
 </style>
 {% endblock %}
 
@@ -80,6 +83,7 @@
             {% endif %}
         {% endfor %}
     </div>
+    {{ knp_pagination_render(articles) }}
 </div>
 {% endblock %}
 
